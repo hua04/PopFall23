@@ -1,8 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PopUpSpawner : MonoBehaviour
 {
     public GameObject popup;
+    public SpriteRenderer renderers;
+    public int totalPopups;
    
     
 
@@ -18,6 +22,8 @@ public class PopUpSpawner : MonoBehaviour
 
     private void SpawnPop()
     {
+        totalPopups+=1;
+
         spawnZone = Random.Range(0, 4);
 
         switch (spawnZone)
@@ -42,8 +48,15 @@ public class PopUpSpawner : MonoBehaviour
         }
 
         spawnPos = new Vector3(randomXpos, randomYpos, 0f);
-        Instantiate(popup, spawnPos, Quaternion.identity);
-    
+        GameObject spawnedObj = Instantiate(popup, spawnPos, Quaternion.identity);
+        SpriteRenderer[] renderers = spawnedObj.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var rend in renderers)
+        {
+            rend.sortingOrder=rend.sortingOrder += totalPopups;
+           
+
+        }
+
 
     }
 }
