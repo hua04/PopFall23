@@ -7,6 +7,7 @@ public class PopUpSpawner : MonoBehaviour
     public GameObject popup;
     public SpriteRenderer renderers;
     public int totalPopups;
+    public int currentPopups;
    
     
 
@@ -18,13 +19,15 @@ public class PopUpSpawner : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnPop", 3f, Random.Range(minTime, maxTime)); //spawns pop ups at random intervals between min and max times
+        
     }
 
     private void SpawnPop()
     {
         totalPopups+=1;
-
+        currentPopups += 1;
         spawnZone = Random.Range(0, 4);
+        
 
         switch (spawnZone)
         {

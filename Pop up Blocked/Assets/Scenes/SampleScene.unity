@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 663461031}
   - component: {fileID: 663461030}
   m_Layer: 0
-  m_Name: Pop Up Spawner
+  m_Name: PopUpSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,6 +349,7 @@ MonoBehaviour:
   popup: {fileID: 1326623476617512992, guid: a823be83286a2f94cbb383eecbf8c87b, type: 3}
   renderers: {fileID: 0}
   totalPopups: 0
+  currentPopups: 0
   minTime: 2
   maxTime: 5
 --- !u!4 &663461031

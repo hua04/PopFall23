@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class Typer : MonoBehaviour
 {
     public TextMeshProUGUI wordOutput;
+    public GameObject spawner;
+    PopUpSpawner popUpSpawner;
 
     private string remainingWord;
     private string currentWord= "I'm sorry that I hurt you.";
@@ -16,6 +18,8 @@ public class Typer : MonoBehaviour
     void Start()
     {
         SetCurrentWord();
+        spawner = GameObject.Find("PopUpSpawner");
+        popUpSpawner = spawner.GetComponent<PopUpSpawner>();
     }
 
     void SetCurrentWord()
@@ -37,14 +41,22 @@ public class Typer : MonoBehaviour
 
     void CheckInput()
     {
-        if (Input.anyKeyDown)
+        if (popUpSpawner.currentPopups == 0)
         {
-            string keysPressed = Input.inputString;
-            if (keysPressed.Length == 1)
+            if (Input.anyKeyDown)
             {
-                EnterLetter(keysPressed);
+                string keysPressed = Input.inputString;
+                if (keysPressed.Length == 1)
+                {
+                    EnterLetter(keysPressed);
+                }
             }
         }
+        else
+        {
+            Debug.Log("popup active");
+        }
+       
 
     }
 
