@@ -24,9 +24,9 @@ public class PopUpSpawner : MonoBehaviour
 
     private void SpawnPop()
     {
-        totalPopups+=1;
-        currentPopups += 1;
-        spawnZone = Random.Range(0, 4);
+        totalPopups+=1; //Total amount of pop ups that have appeared
+        currentPopups += 1; //Amount of pop ups currently on screen
+        spawnZone = Random.Range(0, 4);//Different pop up zones
         
 
         switch (spawnZone)
@@ -50,10 +50,10 @@ public class PopUpSpawner : MonoBehaviour
 
         }
 
-        spawnPos = new Vector3(randomXpos, randomYpos, 0f);
+        spawnPos = new Vector3(randomXpos, randomYpos, 0f);//Spawn pop up
         GameObject spawnedObj = Instantiate(popup, spawnPos, Quaternion.identity);
-        SpriteRenderer[] renderers = spawnedObj.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var rend in renderers)
+        SpriteRenderer[] renderers = spawnedObj.GetComponentsInChildren<SpriteRenderer>();//Get sprite renderer
+        foreach (var rend in renderers) //trying to get rid of overlap issue
         {
             rend.sortingOrder=rend.sortingOrder += totalPopups;
            

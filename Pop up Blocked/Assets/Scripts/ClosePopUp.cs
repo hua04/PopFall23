@@ -11,7 +11,7 @@ public class ClosePopUp : MonoBehaviour
     {
         spawner = GameObject.Find("PopUpSpawner");
         popUpSpawner = spawner.GetComponent<PopUpSpawner>();
-        popUpSpawner.currentPopups -= 1;
+        popUpSpawner.currentPopups -= 1; //adjusts number count of popups on screen
         Destroy(popUp);
     }
 }
